@@ -3,3 +3,9 @@
     width: 100%;
     background: url(../../assets/banner.png) no-repeat center;
 }
+
+@media (max-width: 768px) {
+    .bannerBoxWrapper {
+        display: none;
+    }
+}

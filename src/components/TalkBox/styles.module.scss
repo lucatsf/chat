@@ -5,17 +5,21 @@
     gap: 1rem;
     flex: 1;
     justify-content: center;
+    padding: 4px;
 }
 
 .talkContent {
     width: 340px;
     height: 40px;
+    max-height: 400px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-left: 0.6rem;
+    color: var(--brow-700);
 }
 
-.talk {
+.talk, .talkMe {
     display: flex;
     align-items: center;
     width: max-content;
@@ -25,13 +29,19 @@
     padding: 1rem;
     border-radius: 0.5rem;
 
-    background:  var(--purple-900);
-
     &:hover {
         filter: brightness(1.1);
     }
 
     cursor: pointer;
+}
+
+.talkMe {
+    background: var(--purple-700);
+}
+
+.talk {
+    background: var(--purple-900);
 }
 
 .userImage {
@@ -43,6 +53,6 @@
 }
 
 .prevText {
-    color: var(--brow-700);
+    color: var(--white);
     font-size: 0.8rem;
 }

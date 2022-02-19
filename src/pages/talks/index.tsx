@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import { useContext, useEffect, useState } from 'react'
+import { io } from 'socket.io-client'
 import Home from '..'
+import SendMessage from '../../components/SendMessage'
 import TalkBox from '../../components/TalkBox'
 import { AuthContext } from '../../context/auth'
 import { api } from '../../services/api'
@@ -14,8 +16,17 @@ type Message = {
     id: string;
     message: string;
     likes: number;
-    user: User
+    user: User;
+    user_id: string;
 }
+
+const socket = io('http://localhost:4000')
+
+const messagesQueue: Message[] = []
+
+socket.on('new_message_chat', (newMessage: Message) => {
+    messagesQueue.push(newMessage)
+})
 
 export default function Talks() {
     const { user } = useContext(AuthContext)
@@ -23,6 +34,24 @@ export default function Talks() {
     const [messages, setMessages] = useState<Message[]>([])
 
     useEffect(() => {
+        setInterval(() => {
+            if (messagesQueue.length > 0) {
+                setMessages(prevState => [
+                    messagesQueue[0],
+                    ...prevState,
+                ].filter(Boolean))
+                messagesQueue.shift()
+            }
+        }, 1000)
+    }, [])
+
+    useEffect(() => {
+        const token = localStorage.getItem('@chat:token')
+
+        if(token) {
+          api.defaults.headers.common.authorization = `Bearer ${token}`;
+        }
+
         api.get<Message[]>('/message').then(response => {
             setMessages(response.data)
         })
@@ -34,6 +63,7 @@ export default function Talks() {
                 <Head>
                     <title>Chat | Talks</title>
                 </Head>
+                <SendMessage />
                 {messages.map(message => {
                     return (
                         <TalkBox

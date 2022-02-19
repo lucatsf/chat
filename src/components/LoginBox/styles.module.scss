@@ -15,6 +15,13 @@
         line-height: 2.5rem;
     }
 
+    @media (max-width: 768px) {
+        width: 579px;
+
+        padding: 82;
+        text-align: center;
+    }
+
     .signInGoogle {
         background: var(--red-700);
         margin-top: 32px;
