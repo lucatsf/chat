@@ -7,7 +7,7 @@ module.exports = nextConfig
 
 module.exports = {
   images: {
-    domains: ['assets.vercel.com', 'github.com'],
+    domains: ['lh3.googleusercontent.com', 'github.com'],
     formats: ['image/avif', 'image/webp'],
   },
 }
