@@ -1,0 +1,48 @@
+.talksList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+    justify-content: center;
+}
+
+.talkContent {
+    width: 340px;
+    height: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.talk {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    margin: 0.8rem auto;
+    justify-content: center;
+
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    background:  var(--purple-900);
+
+    &:hover {
+        filter: brightness(1.1);
+    }
+
+    cursor: pointer;
+}
+
+.userImage {
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+}
+
+.prevText {
+    color: var(--brow-700);
+    font-size: 0.8rem;
+}
