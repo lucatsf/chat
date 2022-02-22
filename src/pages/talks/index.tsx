@@ -20,7 +20,7 @@ type Message = {
     user_id: string;
 }
 
-const socket = io('http://localhost:4000')
+const socket = io('http://ec2-3-19-76-255.us-east-2.compute.amazonaws.com')
 
 const messagesQueue: Message[] = []
 
