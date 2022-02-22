@@ -33,7 +33,7 @@ export function AuthProvider(props:AuthProvider) {
 
   const [user, setUser] = useState<User | null>(null);
 
-  const signInUrl = `https://api.lucastorres.dev`
+  const signInUrl = `https://api.lucastorres.dev/authenticate/google`
 
   async function sigIn(code: string) {
 
