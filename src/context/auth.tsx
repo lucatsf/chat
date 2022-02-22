@@ -33,7 +33,7 @@ export function AuthProvider(props:AuthProvider) {
 
   const [user, setUser] = useState<User | null>(null);
 
-  const signInUrl = `http://localhost:4000/authenticate/google`
+  const signInUrl = `http://ec2-3-19-76-255.us-east-2.compute.amazonaws.com/authenticate/google`
 
   async function sigIn(code: string) {
 
